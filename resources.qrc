@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/logo.png</file>
+        <file>images/drums-example.png</file>
+        <file>images/sax-example.png</file>
+        <file>images/trumpet-example.png</file>
+        <file>images/drums.png</file>
+        <file>images/trumpet.png</file>
+        <file>images/sax.PNG</file>
+        <file>images/curtainleft.png</file>
+        <file>images/curtainright.png</file>
+        <file>images/stage.png</file>
+    </qresource>
+</RCC>
