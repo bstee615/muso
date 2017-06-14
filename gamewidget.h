@@ -6,8 +6,6 @@
 #include <QWidget>
 #include <QMouseEvent>
 #include <QList>
-// TODO: Install Qt5.9 so that this works.
-#include <QMediaPlayer>
 
 namespace Ui {
 class GameWidget;
@@ -30,10 +28,23 @@ private slots:
 
     void on_buttonDrums_clicked();
 
+    void on_buttonTrumpetMute_clicked();
+
+    void on_buttonSaxMute_clicked();
+
+    void on_buttonDrumsMute_clicked();
+
+    void on_sliderTrumpetVolume_sliderMoved(int position);
+
+    void on_sliderSaxVolume_sliderMoved(int position);
+
+    void on_sliderDrumsVolume_sliderMoved(int position);
+
 private:
     Ui::GameWidget *ui;
     QList<MovableLabel*> labelList;
-    QMediaPlayer *player;
+
+    int trumpetPastVolume, saxPastVolume, drumsPastVolume;
 };
 
 #endif // GAMEWIDGET_H

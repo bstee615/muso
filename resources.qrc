@@ -10,5 +10,8 @@
         <file>images/curtainleft.png</file>
         <file>images/curtainright.png</file>
         <file>images/stage.png</file>
+        <file>images/drums.wav</file>
+        <file>images/trumpet.wav</file>
+        <file>images/sax.wav</file>
     </qresource>
 </RCC>

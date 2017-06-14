@@ -5,6 +5,10 @@
 MovableLabel::MovableLabel(QWidget *parent): QLabel(parent) {
     setMouseTracking(true); // enable mouse move events
     mouseDragging = false;
+
+    // TODO: Add sounds. Y'know, the whole point of the game.
+    player = new QMediaPlayer(this);
+    player->setVolume(50);
 }
 void MovableLabel::mouseMoveEvent(QMouseEvent *ev) {
     int stageLeft = (pos().y() / 1.75 - 365) * -1; // Second quadrant
@@ -27,13 +31,14 @@ void MovableLabel::mouseMoveEvent(QMouseEvent *ev) {
     }
 }
 void MovableLabel::mousePressEvent(QMouseEvent *ev) {
+    player->stop();
     mouseDragging = true;
     offset = ev->pos(); // location where mouse was clicked within the label
 
     this->raise();
 }
 void MovableLabel::mouseReleaseEvent(QMouseEvent *) {
-
+    player->play();
     mouseDragging = false;
     emit clicked();
 }
