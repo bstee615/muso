@@ -3,6 +3,12 @@
 
 #include <QDebug>
 
+// TODO: Spruce up the UI.
+// TODO: Add options to:
+// 		1. Clear the stage.
+// 		2. Add custom sounds and images.
+// TODO: Make the curtains come first.
+
 GameWidget::GameWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameWidget),
