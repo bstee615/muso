@@ -6,16 +6,17 @@
 #include <QMouseEvent>
 #include <QString>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 class MovableLabel : public QLabel
 {
     Q_OBJECT
 
     QPoint offset;
-
-    QMediaPlayer *player;
 public:
     QString type;
+    QMediaPlayer *player;
+    QMediaPlaylist *playlist;
 
     bool mouseDragging;
 
@@ -25,8 +26,6 @@ public:
     void mousePressEvent(QMouseEvent *ev);
 
     void mouseReleaseEvent(QMouseEvent *);
-
-    QMediaPlayer *getPlayer() {return player;}
 
 signals:
     void clicked();

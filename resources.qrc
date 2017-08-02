@@ -1,17 +1,21 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/logo.png</file>
+        <file>images/trumpet.png</file>
+        <file>images/background.jpg</file>
         <file>images/drums-example.png</file>
         <file>images/sax-example.png</file>
         <file>images/trumpet-example.png</file>
-        <file>images/drums.png</file>
-        <file>images/trumpet.png</file>
+        <file>images/logo.png</file>
         <file>images/sax.PNG</file>
-        <file>images/curtainleft.png</file>
-        <file>images/curtainright.png</file>
-        <file>images/stage.png</file>
-        <file>images/drums.wav</file>
-        <file>images/trumpet.wav</file>
-        <file>images/sax.wav</file>
+        <file>images/drums.PNG</file>
+        <file>images/drums-crazy.wav</file>
+        <file>images/drums-fast.wav</file>
+        <file>images/drums-groove.wav</file>
+        <file>images/sax-breathy.wav</file>
+        <file>images/sax-light.wav</file>
+        <file>images/sax-weep.wav</file>
+        <file>images/trumpet-jazzy.wav</file>
+        <file>images/trumpet-riff.wav</file>
+        <file>images/trumpet-salsa.wav</file>
     </qresource>
 </RCC>

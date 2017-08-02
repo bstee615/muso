@@ -6,15 +6,20 @@ MovableLabel::MovableLabel(QWidget *parent): QLabel(parent) {
     setMouseTracking(true); // enable mouse move events
     mouseDragging = false;
 
-    // TODO: Add sounds. Y'know, the whole point of the game.
+    // Add sounds. Y'know, the whole point of the game.
     player = new QMediaPlayer(this);
+    playlist = new QMediaPlaylist(this);
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
     player->setVolume(50);
+    player->setPlaylist(playlist);
 }
 void MovableLabel::mouseMoveEvent(QMouseEvent *ev) {
-    int stageLeft = (pos().y() / 1.75 - 365) * -1; // Second quadrant
-    int stageRight = pos().y() / 1.75 + 675; // First quadrant
-    int stageTop = 225;
-    int stageBottom = -((pos().x()-512)*(pos().x()-512)*0.0002) + 500; // Upwards parabola starting from 620 and going 35 points up. Centered on 512, goes 388 points right.
+    int stageLeft = 0;
+    int stageRight = 1024;
+    int stageTop = (pos().x() * 25 / 256) + 385;
+    int stageBottom = -((pos().x()-512)*(pos().x()-512)*0.0002) + 475; // Upwards parabola.
+    stageBottom += pos().x() * 19 / 256; // Offset.
     if (mouseDragging) {
         this->move(mapToParent(ev->pos() - this->offset));
 
@@ -24,8 +29,8 @@ void MovableLabel::mouseMoveEvent(QMouseEvent *ev) {
             this->move(stageLeft, pos().y());
         if (pos().x() + rect().width() > stageRight)
             this->move(stageRight - rect().width(), pos().y());
-        if (pos().y() < stageTop)
-            this->move(pos().x(), stageTop);
+        if (pos().y() + rect().height() < stageTop)
+            this->move(pos().x(), stageTop - rect().height());
         if (pos().y() + rect().height() > stageBottom)
             this->move(pos().x(), stageBottom - rect().height());
     }

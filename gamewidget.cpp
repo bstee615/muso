@@ -30,8 +30,8 @@ GameWidget::~GameWidget()
 void GameWidget::on_buttonTrumpet_clicked()
 {
     MovableLabel* label = new MovableLabel(this);
-    label->resize(93,140);
-    label->move(QPoint(250,300));
+    label->resize(105,242);
+    label->move(QPoint(200,225));
     label->setPixmap(QPixmap("://images/trumpet.png"));
     label->setScaledContents(true);
     label->raise();
@@ -39,15 +39,15 @@ void GameWidget::on_buttonTrumpet_clicked()
     labelList.push_back(label);
 
     label->type = QString("trumpet");
-    label->getPlayer()->setMedia(QUrl::fromLocalFile("C:/code/Muso/images/trumpet.wav"));
-    label->getPlayer()->play();
+    label->playlist->addMedia(QMediaContent(QUrl("://images/trumpet-jazzy.wav")));
+    label->player->play();
 }
 
 void GameWidget::on_buttonSax_clicked()
 {
     MovableLabel* label = new MovableLabel(this);
-    label->resize(65,135);
-    label->move(QPoint(450,300));
+    label->resize(130,235);
+    label->move(QPoint(450,250));
     label->setPixmap(QPixmap("://images/sax.PNG"));
     label->setScaledContents(true);
     label->raise();
@@ -55,41 +55,41 @@ void GameWidget::on_buttonSax_clicked()
     labelList.push_back(label);
 
     label->type = QString("sax");
-    label->getPlayer()->setMedia(QUrl::fromLocalFile("C:/code/Muso/images/sax.wav"));
-    label->getPlayer()->play();
+    label->playlist->addMedia(QMediaContent(QUrl("://images/sax-light.wav")));
+    label->player->play();
 }
 
 void GameWidget::on_buttonDrums_clicked()
 {
     MovableLabel* label = new MovableLabel(this);
-    label->resize(140,165);
-    label->move(QPoint(650,300));
-    label->setPixmap(QPixmap("://images/drums.png"));
+    label->resize(235,285);
+    label->move(QPoint(650,250));
+    label->setPixmap(QPixmap("://images/drums.PNG"));
     label->setScaledContents(true);
     label->raise();
     label->show();
     labelList.push_back(label);
 
     label->type = QString("drums");
-    label->getPlayer()->setMedia(QUrl::fromLocalFile("C:/code/Muso/images/drums.wav"));
-    label->getPlayer()->play();
+    label->playlist->addMedia(QMediaContent(QUrl("://images/drums-crazy.wav")));
+    label->player->play();
 }
 
 void GameWidget::on_buttonTrumpetMute_clicked()
 {
     if (ui->buttonTrumpetMute->isChecked()) {
-        trumpetPastVolume = labelList.at(0)->getPlayer()->volume();
+        trumpetPastVolume = labelList.at(0)->player->volume();
         for (auto item: labelList) {
             if (item->type == QString("trumpet")) {
-                trumpetPastVolume = item->getPlayer()->volume();
-                item->getPlayer()->setVolume(0);
+                trumpetPastVolume = item->player->volume();
+                item->player->setVolume(0);
             }
         }
     }
     else {
         for (auto item: labelList) {
             if (item->type == QString("trumpet"))
-                item->getPlayer()->setVolume(trumpetPastVolume);
+                item->player->setVolume(trumpetPastVolume);
         }
     }
 }
@@ -99,15 +99,15 @@ void GameWidget::on_buttonSaxMute_clicked()
     if (ui->buttonSaxMute->isChecked()) {
         for (auto item: labelList) {
             if (item->type == QString("sax")) {
-                saxPastVolume = item->getPlayer()->volume();
-                item->getPlayer()->setVolume(0);
+                saxPastVolume = item->player->volume();
+                item->player->setVolume(0);
             }
         }
     }
     else {
         for (auto item: labelList) {
             if (item->type == QString("sax"))
-                item->getPlayer()->setVolume(saxPastVolume);
+                item->player->setVolume(saxPastVolume);
         }
     }
 }
@@ -115,17 +115,17 @@ void GameWidget::on_buttonSaxMute_clicked()
 void GameWidget::on_buttonDrumsMute_clicked()
 {
     if (ui->buttonDrumsMute->isChecked()) {
-        drumsPastVolume = labelList.at(0)->getPlayer()->volume();
+        drumsPastVolume = labelList.at(0)->player->volume();
         for (auto item: labelList) {
             if (item->type == QString("drums"))
-                drumsPastVolume = item->getPlayer()->volume();
-                item->getPlayer()->setVolume(0);
+                drumsPastVolume = item->player->volume();
+                item->player->setVolume(0);
         }
     }
     else {
         for (auto item: labelList) {
             if (item->type == QString("drums"))
-                item->getPlayer()->setVolume(drumsPastVolume);
+                item->player->setVolume(drumsPastVolume);
         }
     }
 }
@@ -134,7 +134,7 @@ void GameWidget::on_sliderTrumpetVolume_sliderMoved(int position)
 {
     for (auto item: labelList) {
         if (item->type == QString("trumpet"))
-            item->getPlayer()->setVolume(position);
+            item->player->setVolume(position);
     }
 }
 
@@ -142,7 +142,7 @@ void GameWidget::on_sliderSaxVolume_sliderMoved(int position)
 {
     for (auto item: labelList) {
         if (item->type == QString("sax"))
-            item->getPlayer()->setVolume(position);
+            item->player->setVolume(position);
     }
 }
 
@@ -150,6 +150,6 @@ void GameWidget::on_sliderDrumsVolume_sliderMoved(int position)
 {
     for (auto item: labelList) {
         if (item->type == QString("drums"))
-            item->getPlayer()->setVolume(position);
+            item->player->setVolume(position);
     }
 }
